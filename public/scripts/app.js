@@ -9,6 +9,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 //
+
+var object = {
+  name: "Will",
+  getName: function getName() {
+    return this.name;
+  }
+};
+
+var getName = object.getName.bind({ name: "William" });
+
+console.log(getName());
+
 var IndecisionApp = function (_React$Component) {
   _inherits(IndecisionApp, _React$Component);
 
@@ -115,7 +127,7 @@ var Options = function (_React$Component4) {
   _createClass(Options, [{
     key: "handleRemoveAll",
     value: function handleRemoveAll() {
-      alert("hi");
+      console.log(this.props.options);
     }
   }, {
     key: "render",
