@@ -28,19 +28,18 @@ class IndecisionApp extends React.Component {
   }
 }
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.title}</h1>
-        <h2>{this.props.subtitle}</h2>
-      </div>
-    );
-  }
+function Header(props) {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      <h2>{props.subtitle}</h2>
+    </div>
+  );
 }
 
 class Action extends React.Component {
-  handlePick() {
+  handlePick(e) {
+    e.preventDefault;
     alert("hi");
   }
   render() {
@@ -53,8 +52,9 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
-  handleRemoveAll() {
-    console.log(this.props.options);
+  handleRemoveAll(e) {
+    e.preventDefault;
+    alert("hello");
   }
   render() {
     return (
@@ -62,7 +62,9 @@ class Options extends React.Component {
         {this.props.options.map(option => (
           <Option key={option} optionText={option} />
         ))}
-        <button onClick={this.handleRemoveAll.bind(this)}>Remove All</button>
+        <button type="submit" onClick={this.handleRemoveAll}>
+          Remove All
+        </button>
       </div>
     );
   }
