@@ -8,19 +8,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//
-
-var object = {
-  name: "Will",
-  getName: function getName() {
-    return this.name;
-  }
-};
-
-var getName = object.getName.bind({ name: "William" });
-
-console.log(getName());
-
 var IndecisionApp = function (_React$Component) {
   _inherits(IndecisionApp, _React$Component);
 
@@ -104,17 +91,20 @@ var Action = function (_React$Component2) {
 var Options = function (_React$Component3) {
   _inherits(Options, _React$Component3);
 
-  function Options() {
+  function Options(props) {
     _classCallCheck(this, Options);
 
-    return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+    var _this3 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+    _this3.handleRemoveAll = _this3.handleRemoveAll.bind(_this3);
+    return _this3;
   }
 
   _createClass(Options, [{
     key: "handleRemoveAll",
     value: function handleRemoveAll(e) {
-      e.preventDefault;
-      alert("hello");
+      e.preventDefault();
+      console.log(this.props.options);
     }
   }, {
     key: "render",
@@ -122,14 +112,14 @@ var Options = function (_React$Component3) {
       return React.createElement(
         "div",
         null,
-        this.props.options.map(function (option) {
-          return React.createElement(Option, { key: option, optionText: option });
-        }),
         React.createElement(
           "button",
           { type: "submit", onClick: this.handleRemoveAll },
           "Remove All"
-        )
+        ),
+        this.props.options.map(function (option) {
+          return React.createElement(Option, { key: option, optionText: option });
+        })
       );
     }
   }]);
@@ -173,9 +163,8 @@ var AddOption = function (_React$Component5) {
     key: "handleAddOption",
     value: function handleAddOption(e) {
       e.preventDefault();
-
-      var option = e.target.elements.option.value.trim();
-      option && alert(option);
+      var value = e.target.elements.option.value.trim();
+      value && alert(value);
     }
   }, {
     key: "render",
@@ -189,8 +178,8 @@ var AddOption = function (_React$Component5) {
           React.createElement("input", { type: "text", name: "option" }),
           React.createElement(
             "button",
-            null,
-            "Submit"
+            { type: "submit" },
+            "Add Option"
           )
         )
       );
