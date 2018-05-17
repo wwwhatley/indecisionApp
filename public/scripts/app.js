@@ -23,7 +23,6 @@ var IndecisionApp = function (_React$Component) {
       var title = "Indecision";
       var subtitle = "Put your life in the hands of a computer";
       var options = ["Thing 1", "Thing 2", "Thing 3", "Thing 4"];
-
       return React.createElement(
         "div",
         null,
@@ -38,19 +37,22 @@ var IndecisionApp = function (_React$Component) {
   return IndecisionApp;
 }(React.Component);
 
-function Header(props) {
+function Header(_ref) {
+  var title = _ref.title,
+      subtitle = _ref.subtitle;
+
   return React.createElement(
     "div",
     null,
     React.createElement(
       "h1",
       null,
-      props.title
+      title
     ),
     React.createElement(
       "h2",
       null,
-      props.subtitle
+      subtitle
     )
   );
 }
@@ -96,7 +98,7 @@ var Options = function (_React$Component3) {
 
     var _this3 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
 
-    _this3.handleRemoveAll = _this3.handleRemoveAll.bind(_this3);
+    _this3.state = {}, _this3.handleRemoveAll = _this3.handleRemoveAll.bind(_this3);
     return _this3;
   }
 
